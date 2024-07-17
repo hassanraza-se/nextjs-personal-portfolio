@@ -2,32 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+html {
+    scroll-behavior: smooth;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+section {
+    @apply scroll-mt-24
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.swiper-pagination-clickable .swiper-pagination-bullet {
+    @apply w-4 h-4 bg-primary opacity-100 border-0
+}
+.swiper-pagination-clickable .swiper-pagination-bullet-active {
+    @apply bg-[transparent] border border-primary
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+#portfolio .swiper-slide {
+    height: auto !important;
+}
+
+ul li.work-item .work-details {
+    @apply pb-12
+}
+
+ul li.work-item:last-child .work-details {
+    @apply pb-0
+}
+
+.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.fade-out {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+@media screen and (max-width: 640px) {
+    #resume div:first-of-type > ul li.work-item:last-child .work-details {
+        @apply pb-12
+    }
 }
