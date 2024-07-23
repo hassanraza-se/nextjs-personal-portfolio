@@ -3,6 +3,7 @@ import React, {useEffect} from 'react';
 import NavItem from "@/components/NavItem";
 import NavLink from "@/components/NavLink";
 import Button from "@/components/Button";
+import Link from "next/link";
 
 function NavBar() {
 
@@ -55,14 +56,14 @@ function NavBar() {
     return (
         <nav className={"bg-white w-full max-w-full " + (isOpen ? 'h-screen' : 'h-auto')}>
             <div className="container px-4 md:px-16 flex flex-wrap md:flex-nowrap items-center justify-between mx-auto py-8">
-                <a href="https://flowbite.com/" className="flex items-center space-x-3 rtl:space-x-reverse">
+                <Link href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
                          stroke="currentColor" className="size-6 stroke-2 stroke-secondary">
                         <path strokeLinecap="round" strokeLinejoin="round"
                               d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25"/>
                     </svg>
                     <span className="self-center text-2xl font-semibold whitespace-nowrap bg-gradient-to-r from-primary via-secondary to-orange text-[transparent] bg-clip-text">Hassan Raza</span>
-                </a>
+                </Link>
                 <button data-collapse-toggle="navbar-default" type="button" onClick={toggleNav}
                         className="relative z-10 inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100"
                         aria-controls="navbar-default" aria-expanded="false">
