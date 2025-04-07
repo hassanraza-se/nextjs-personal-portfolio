@@ -3,25 +3,36 @@ import React from 'react';
 import Button from "@/components/Button";
 import Image from "next/image";
 import SocialLinks from "@/components/SocialLinks";
+import {Setting} from "@/lib/contentful-helpers";
+import {useSettings} from "@/context/SettingsContext";
 
-type HeroSectionProps = {}
+function HeroSection() {
 
-function HeroSection({}: HeroSectionProps) {
+    const { settings } = useSettings();
+
+    const intro = settings?.find(setting => setting.key === "intro");
+    const cv_link = settings?.find(setting => setting.key === "cv_link");
+    const years_of_experience = settings?.find(setting => setting.key === "years_of_experience");
+    const number_of_projects = settings?.find(setting => setting.key === "number_of_projects");
+    const main_image = settings?.find(setting => setting.key === "main_image");
 
     return (
-        <section id={"home"} className={"hero fade-out px-8 md:px-36 py-4 md:py-16 flex md:flex-row flex-col-reverse gap-8 justify-between bg-white"}>
+        <section id={"home"}
+                 className={"hero fade-out px-8 md:px-36 py-4 md:py-16 flex md:flex-row flex-col-reverse gap-8 justify-between bg-white"}>
             <div className={"w-full md:w-1/2 flex flex-col gap-y-4"}>
                 <div className={"text-lg font-semibold"}>{`Hi, I'm Hassan Raza`}</div>
                 <h1 className={"text-4xl font-bold tracking-wide leading-tight"}>
-                    {`I'm`} a <span className={"bg-gradient-to-r from-primary via-secondary to-orange text-[transparent] bg-clip-text"}>Full-Stack</span><br />
+                    {`I'm`} a <span
+                    className={"bg-gradient-to-r from-primary via-secondary to-orange text-[transparent] bg-clip-text"}>Full-Stack</span><br/>
                     Website Developer.
                 </h1>
                 <p className={"max-w-md text-darkGrey"}>
-                    {`I'm a full-stack developer and software engineer from Lahore, Pakistan. Skilled in HTML, CSS, JavaScript, PHP, Laravel, React.js, Vue.js, Next.js, Tailwind CSS, Node.js, and databases. I create dynamic web apps and solve complex problems.`}
+                    {intro?.value}
                 </p>
                 <div className={"flex gap-6 py-6"}>
                     <Button variant={"primary"} display={"a"} url={"#portfolio"}>My Portfolio</Button>
-                    <Button variant={"slate"} display={"a"} url={"/Hassan-Raza-cv.pdf"} className={"flex gap-2 items-center"}>
+                    <Button variant={"slate"} display={"a"} url={cv_link?.value}
+                            className={"flex gap-2 items-center"}>
                         Download CV
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
                              stroke="currentColor" className="size-4">
@@ -34,7 +45,7 @@ function HeroSection({}: HeroSectionProps) {
                 <div className={"flex justify-between max-w-md icons"}>
                     <div className={""}>
                         <div className={"font-semibold mb-4 text-lg"}>Find Me On</div>
-                        <SocialLinks bgColor={"bg-slate"} facebook={false} skype={false} />
+                        <SocialLinks bgColor={"bg-slate"} facebook={false} skype={false}/>
 
                     </div>
 
@@ -58,7 +69,8 @@ function HeroSection({}: HeroSectionProps) {
                             </span>
 
                             <span className={"bg-slate p-2 rounded"}>
-                                <svg viewBox="-4 0 264 264" version="1.1" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"
+                                <svg viewBox="-4 0 264 264" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                     preserveAspectRatio="xMidYMid"
                                      fill="#000000" className={"size-6"}>
                                     <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                                     <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
@@ -73,7 +85,8 @@ function HeroSection({}: HeroSectionProps) {
                             </span>
 
                             <span className={"bg-slate p-2 rounded"}>
-                                <svg viewBox="0 0 256 256" version="1.1" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"
+                                <svg viewBox="0 0 256 256" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                     preserveAspectRatio="xMidYMid"
                                      fill="#000000" className={"size-6"}>
                                     <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                                     <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
@@ -98,12 +111,13 @@ function HeroSection({}: HeroSectionProps) {
                             className={"absolute w-full h-full rounded-full -top-3 -right-2 z-0 bg-gradient-to-r from-primary via-secondary to-orange p-1"}>
                             <div className={"bg-white w-full h-full rounded-full"}></div>
                         </div>
-                        <Image src={"/profile1.png"} width={500} height={500}
-                               className={"rounded-full bg-gradient-to-r from-primary to-secondary relative z-10"} alt={""}/>
+                        <Image src={`https:${main_image?.image.fields.file.url}`} width={500} height={500}
+                               className={"rounded-full bg-gradient-to-r from-primary to-secondary relative z-10"}
+                               alt={""}/>
 
                         <div
                             className={"experience animate-bounce-smooth absolute flex items-center gap-2 rounded-xl bg-white shadow-xl py-2 px-3 top-1/4 z-10 -left-[12%] text-primary"}>
-                            <div className={"text-2xl font-bold"}>5+</div>
+                            <div className={"text-2xl font-bold"}>{years_of_experience?.value}+</div>
                             <div className={"text-sm leading-tight"}>Years of <br/> Experience</div>
                         </div>
 
@@ -117,7 +131,7 @@ function HeroSection({}: HeroSectionProps) {
 
                         <div
                             className={"project animate-bounce-smooth absolute flex items-center gap-2 rounded-xl bg-white shadow-xl py-2 px-3 bottom-1/4 z-10 -right-[15%] text-primary"}>
-                            <div className={"text-2xl font-bold"}>100+</div>
+                            <div className={"text-2xl font-bold"}>{number_of_projects?.value}+</div>
                             <div className={"text-sm leading-tight"}>Projects <br/> Completed</div>
                         </div>
                     </div>

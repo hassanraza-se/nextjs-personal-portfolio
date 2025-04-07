@@ -10,7 +10,7 @@ export type PortfolioSlideProps = {
 function PortfolioSlide({project, className = ""}: PortfolioSlideProps) {
     return (
         <div className={"flex flex-col gap-4 p-6 rounded-xl shadow-lg bg-white " + className}>
-            <Image className={"rounded-xl w-full"} src={`https://${project.thumbnail.fields.file.url}`} alt="" width={400} height={250}/>
+            <Image className={"rounded-xl w-full"} src={`https:${project.thumbnail.fields.file.url}`} alt="" width={400} height={250}/>
             <h3 className={"font-bold"}>{project.projectTitle} - <span className={'font-light'}>{project.tagline}</span></h3>
             <p className={"text-darkGrey"}>{project.shortDescription}</p>
             <div className={"flex gap-4 text-primary"}>

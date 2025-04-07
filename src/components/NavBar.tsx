@@ -4,8 +4,12 @@ import NavItem from "@/components/NavItem";
 import NavLink from "@/components/NavLink";
 import Button from "@/components/Button";
 import Link from "next/link";
+import {useSettings} from "@/context/SettingsContext";
 
 function NavBar() {
+
+    const { settings } = useSettings();
+    const cv_link = settings?.find(setting => setting.key === "cv_link");
 
     const [isOpen, setIsOpen] = React.useState(false);
 
@@ -108,7 +112,7 @@ function NavBar() {
                     </ul>
 
                     <div className={"nav-buttons flex flex-col justify-center items-center md:flex-row gap-6"}>
-                        <Button variant={"slate"} display={"a"} url={"/Hassan-Raza-cv.pdf"} className={"flex gap-2"}>
+                        <Button variant={"slate"} display={"a"} url={cv_link?.value} className={"flex gap-2"}>
                             Download CV
                         </Button>
                         <Button variant={"secondary"} display={"a"} url={"#contact"}>Contact</Button>

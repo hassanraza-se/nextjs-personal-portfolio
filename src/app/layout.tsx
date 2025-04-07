@@ -3,6 +3,8 @@ import {Poppins} from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/NavBar";
 import Loading from "@/app/loading";
+import {getEntries, Setting} from "@/lib/contentful-helpers";
+import {SettingsProvider} from "@/context/SettingsContext";
 
 const poppins = Poppins({
     subsets: ['latin'],
@@ -16,20 +18,25 @@ export const metadata: Metadata = {
     description: "Developed by: Hassan Raza",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
                                        children,
                                    }: Readonly<{
     children: React.ReactNode;
 }>) {
+
+    const settings = await getEntries<Setting>('settings');
+
     return (
         <html lang="en">
         <body className={poppins.className + " bg-white"}>
-        <header className={"sticky top-0 z-50"}>
-            <NavBar />
-        </header>
-        <main className={"relative"}>
-            {children}
-        </main>
+        <SettingsProvider settings={settings}>
+            <header className={"sticky top-0 z-50"}>
+                <NavBar />
+            </header>
+            <main className={"relative"}>
+                {children}
+            </main>
+        </SettingsProvider>
         </body>
         </html>
     );

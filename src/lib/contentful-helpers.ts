@@ -1,6 +1,17 @@
 import { contentfulClient as client } from "@/lib/contentful";
 import { Document } from "@contentful/rich-text-types";
 
+interface File {
+    url: string;
+    details: {
+        image: {
+            height: number;
+            width: number;
+        };
+        size: number;
+    }
+}
+
 export interface Project {
     projectTitle: string;
     shortDescription: string;
@@ -8,16 +19,7 @@ export interface Project {
     tagline: string;
     thumbnail: {
         fields: {
-            file: {
-                url: string;
-                details: {
-                    image: {
-                        height: number;
-                        width: number;
-                    };
-                    size: number;
-                }
-            }
+            file: File
         }
     };
     images: {
@@ -25,6 +27,16 @@ export interface Project {
     };
     tags: string[];
     slug: string;
+}
+
+export interface Setting {
+    key: string;
+    value: string;
+    image: {
+        fields: {
+            file: File
+        }
+    }
 }
 
 // Function to get all entries of a specific content type
