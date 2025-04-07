@@ -21,7 +21,7 @@ function NavBar() {
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
             const sectionHeight = section.clientHeight;
-            if (scrollY >= (sectionTop - sectionHeight / 3)) {
+            if (scrollY >= (sectionTop - sectionHeight / 2.5)) {
                 const s = section.getAttribute("id");
                 if (s) {
                     current = s;
