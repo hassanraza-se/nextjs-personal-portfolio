@@ -7,6 +7,9 @@ const nextConfig = {
             },
             {
                 hostname: "placehold.co"
+            },
+            {
+                hostname: 'images.ctfassets.net'
             }
         ]
     }
