@@ -1,6 +1,6 @@
 import {createClient} from "contentful";
 
 export const contentfulClient = createClient({
-    space: 'plp1hy40b88f',
-    accessToken: 'uqw46OQwKWBSIf9cn2N-mACKbnCMSTC-js6VwYhrWos',
+    space: process.env.CONTENTFUL_SPACE_ID!,
+    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN!,
 })
