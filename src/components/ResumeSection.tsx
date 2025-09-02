@@ -5,16 +5,16 @@ function ResumeSection() {
 
     const works = [
         {
-            "company": "Fiverr & Upwork",
-            "title": "Freelance Full-stack Developer",
-            "year": "2017 - *",
-            "summary": "As a freelance full-stack developer, provided technical solutions to stakeholders, collaborating with cross-functional teams using Laravel, React.js, and Node.js for diverse projects.",
+            "company": "Chemist POS Direct",
+            "title": "Senior MEAN Stack Developer",
+            "year": "2024 - *",
+            "summary": "Working on an IT services platform for pharmacies using Angular for front-end, Node.js APIs handling 10,000+ daily transactions, and scalable backends with Express.js and NestJS.",
             "hashtags": ["Laravel", "React.js", "Node.js"]
         },
         {
             "company": "myls - mylokalesuche",
             "title": "Full-Stack Laravel & Vue.js Developer",
-            "year": "2023 - 2023",
+            "year": "2023 - 2024",
             "summary": "Worked on a comprehensive platform for businesses to manage their online presence using Laravel, Vue.js, and MySQL, ensuring seamless integration across multiple social platforms.",
             "hashtags": ["Laravel", "Vue.js", "MySQL"]
         },
