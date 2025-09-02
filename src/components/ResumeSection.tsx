@@ -9,7 +9,7 @@ function ResumeSection() {
             "title": "Senior MEAN Stack Developer",
             "year": "2024 - *",
             "summary": "Working on an IT services platform for pharmacies using Angular for front-end, Node.js APIs handling 10,000+ daily transactions, and scalable backends with Express.js and NestJS.",
-            "hashtags": ["Laravel", "React.js", "Node.js"]
+            "hashtags": ["Laravel", "Angular", "Node.js"]
         },
         {
             "company": "myls - mylokalesuche",
